@@ -1,0 +1,89 @@
+﻿@model FoodApplication.Models.OrderRecipeDetails
+
+<div class="container-fluid shadow rounded">
+    <div class="row">
+        <div class="col-12">
+            <img src="@Model.Image_Url" class="w-100" id="order-img"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10 mt-2">
+            <h2 class="text-dark">@Model.Title</h2>   
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var i in Model.Ingredients)
+                        {
+                            <tr>
+                                <td>@i.Description</td>
+                                <td>@i.Quantity</td>
+                                <td>@i.Unit</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+         <form autocomplete="off" method="post">
+                <input type="hidden" name="RecipeId" value="@Model.Id" />
+             <input type="hidden" name="RecipeName" value="@Model.Title" />
+             <input type="hidden" name="UserId" value="@ViewBag.UserId" />
+               <div class="p-2">
+                <h2 class="text-dark">Bill Details</h2>
+                <div class="row border-bottom">
+                    <label class="col-9 col-form-label text-muted">Price</label>
+                    <div class="col-3 text-muted">
+                        <i class="fa-solid fa-indian-rupee-sign mt-1"></i>
+                        <span><input type="text" name="Price" id="price" value="@ViewBag.Price" class="border-0 w-75"/></span>
+                    </div>
+                </div>
+                <div class="row border-bottom" id="qtySelection">
+                    <label class="col-9 col-form-label text-muted">Quantity</label>
+                    <div class="col-3 border border-1 border-success text-center">
+                        <div class="mt-1">
+                            <span onclick="onIncDec('inc')"><i class="fa-solid fa-plus"></i></span>
+                                <input type="text" id="qtytextbox" name="Quantity" class="bg-white fw-bold text-center rounded" value="1" readonly />
+                            <span onclick="onIncDec('dec')"><i class="fa-solid fa-minus"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row border-bottom">
+                    <lable class="col-10 col-form-label text-muted">Delivery Charges</lable>
+                    <label class="col-2 text-success col-form-label fw-bold">Free</label>
+                </div>
+                <div class="row border-bottom">
+                    <label class="col-10 col-form-label text-muted">Delivery Address</label>
+                        <textarea class="form-control w-100" name="Address" id="text-area"></textarea>
+                </div>
+                <div class="row border-top border-2 border-black mt-3">
+                    <label class="col-9 col-form-label fw-bold fs-5">Total</label>
+                    <div class="col-3">
+                        <i class="fa-solid fa-indian-rupee-sign mt-1"></i>
+                            <input type="text" class="border-0 w-75" id="totalAmount" name="TotalAmount" value="@ViewBag.Price" />
+                    </div>
+                </div>
+                <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 mt-2">
+                    <button type="submit" class="btn btn-primary btn-sm p-2" onclick="return alert('if you want place Order then Click Ok')">Order</button>
+                </div>
+            </div>
+         </form>
+        </div>
+    </div>
+</div>
+<script src="~/lib//jquery/dist/jquery.min.js"></script>
+<script>
+    $('#text-area').val('@ViewBag.Address')
+</script>

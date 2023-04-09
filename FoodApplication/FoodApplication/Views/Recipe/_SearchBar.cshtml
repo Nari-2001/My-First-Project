@@ -1,0 +1,31 @@
+﻿<div class="shadow rounded w-80">
+    <div class="p-2">
+        <form autocomplete="off">
+              <div class="row">
+                <div class="col-10 text-center ui-widget">
+                    <input type="text" id="tags" class="form-control" placeholder="Search Recipe" name="recipe" />
+                </div>
+                <div class="col-2 mt-1">
+                      <button type="submit" class="btn btn-success btn-sm">Search</button>
+                 </div>
+               </div>
+        </form>
+    </div>
+</div>
+
+<script src="~/lib/jquery/jquery.min.js"></script>
+<script>
+    $(function(){
+        //now gather all the items which we want to give auto suggestions
+        var items = [
+            "mushrooms", "cherry", "mango", "strawberry", "watermelon", "salad", "pizza", "pasta", "popcorn", "cake", "seafood", "fries", "masala", "chicken", "toast", "chili", "chocolate",
+            "curry", "beef", "goat", "fish", "blackberry", "coconut", "carrot", "cucumber", "corn", "beetroot", "banana", "fig", "kiwifruit", "lemon", "ribs", "bacon", "champ","apple"
+        ];
+        //now we have a function 'autocomplete()' in JQuery,by using that function we can suggest items automatically
+        //now we want to use JQuery '$'
+        $("#tags").autocomplete({
+            source: items,          //display all the suggestion,if matching,i want display only 3-suggestion,then we use 'minLength
+            minLength: 3,
+           });
+    });
+</script>

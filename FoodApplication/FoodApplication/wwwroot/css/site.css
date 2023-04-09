@@ -1,0 +1,155 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+.text-orang{
+    color:#fc4b4b !important;
+}
+.char-space{
+    letter-spacing:2px;
+}
+#carouselExampleSlidesOnly {
+    height: 320px;
+}
+
+footer{
+    background-color:#054f9f;
+}
+header{
+    z-index:1000;
+}
+.fa-instagram {
+    color: #E1306C;
+}
+.fa-whatsapp {
+    color: #28D146;
+}
+.fa-facebook {
+    color: #0165E1;
+}
+.fa-envelope {
+    color:#EA4335;
+}
+
+.disCard{
+    height:320px;
+}
+
+#searchposition {
+    top: 100px;
+}
+/*applay style for 'ul'*/
+#recipe-list {
+    top: 4rem;
+}
+
+/*applay style for 'li'*/
+
+.recipe-item:hover {
+    background-color: #6f6c6c;
+    border-radius: 10px;
+}
+.recipe-item:hover a{
+        color: #ffffff !important;
+}
+    /*applay styling for scrollbar*/
+    #list-items::-webkit-scrollbar {
+        width: 10px; /*removes the scrollbar and applay width*/
+    }
+#list-items::-webkit-scrollbar-track {
+    background-color: #fff; /*scrollbar width track applay color*/
+}
+#list-items::-webkit-scrollbar-thumb {
+    background-color: red; /*applay scrollbar for color*/
+    border-radius: 10px;
+}
+
+#order-img {
+    height: 200px;
+}
+
+#qtytextbox{
+    width:30px;
+    border:none;
+}
+#qtytextbox:focus{
+     outline:none;
+    }
+
+    .validation-summary-errors li {
+        color: red;
+    }
+#qtySelection{    /*user not select anything if we use these*/
+    -webkit-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+.fa-plus, .fa-minus {
+    cursor: pointer;
+}
+
+.cartAdd{
+    cursor:pointer;
+}
+
+.fa-solid{
+    color:red;
+}
+#cartscontainr{
+    cursor:pointer;
+}
+
+#cartscontainr:hover + #cartitemsshow {
+    display: block;
+}
+#cartitemsshow{
+    display:none;
+    right:-100px;
+}
+
+#cartitemsshow:hover {
+    display: block;
+}
+
+#removeitemstyle{
+    cursor:pointer;
+}
+
+.cartlistimage {
+    width: 100px;
+    height: 50px;
+}
+
+.cartimg{
+    width: 250px;
+    height: 100px;
+}
+
+.cartTitle{
+    width:500px;
+}
+
+
+
+#emptycart{
+   font-size:250px;
+}

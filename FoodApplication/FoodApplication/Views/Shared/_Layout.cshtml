@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Food Application</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FoodApplication.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="~/css/jquery-ui.min.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="position-sticky top-0">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand text-orang fw-bold" asp-area="" asp-controller="Home" asp-action="Index">Food Application</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-orang fw-bold char-space" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-orang fw-bold char-space" asp-area="" asp-controller="Recipe" asp-action="Index">Recipes</a>
+                        </li>
+                        
+                    </ul>
+                    @if(!User.Identity!.IsAuthenticated)
+                    {
+                        <div>
+                            <a asp-controller="Account" asp-action="Login" class="nav-link text-danger fw-bold">LogIn</a>
+                        </div>
+                    }
+                    else{
+                        <div class="d-flex mx-3">
+                            <span class="mt-2 fw-bold m-1" style="color:blue">@User.Identity.Name</span>
+                            <div class="text-center position-relative">
+                                <span id="cartscontainr" onclick="getCartListItemsFromDB()">
+                                    <i class="fa-solid fa-cart-shopping fs-5 text-danger mt-2"></i>
+                                </span>
+                                <div id="cartitemsshow" class="shadow rounded position-absolute bg-white">
+                                </div>
+                            </div>
+                            <a asp-controller="Account" asp-action="LogOut" class="nav-link text-danger fw-bold">LogOut</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top text-white p-3">
+        <div class="container mt-2">
+           <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <h4>&copy; @DateTime.Now.ToString("yyyy") - FoodApplication</h4>
+                    <p class="mx-4">Healthy, Save and Fastest</p>
+                </div>
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <h4>Contact Us</h4>
+                    <div>
+                        <span><i class="fa-brands fa-instagram mx-1 fs-5"></i></span>
+                        <span class="fs-6 mx-1"> Instagram</span>
+                    </div>
+                    <div>
+                        <span><i class="fa-brands fa-whatsapp mx-1 fs-5"></i></span>
+                        <span class="fs-6 mx-1"> Whatsapp</span>
+                    </div> 
+                    <div>
+                        <span><i class="fa-brands fa-facebook mx-1 fs-5"></i></span>
+                        <span class="fs-6 mx-1"> Facebook</span>
+                    </div> 
+                    <div>
+                        <span><i class="fa-regular fa-envelope mx-1 fs-5"></i></span>
+                        <span class="fs-6 mx-1"> Mail</span>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <h4>Address</h4>
+                    <pre>Guntur, Andhra Pradesh,India 522657</pre>
+                </div>
+           </div>
+           <div>
+               <h6 class="text-center mt-3">Powered By Forkify</h6>
+           </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/jquery-ui.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

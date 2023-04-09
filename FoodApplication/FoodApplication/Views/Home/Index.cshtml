@@ -1,0 +1,110 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="container">
+    <div class="row shadow rounded ">
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner h-100">
+                    <div class="carousel-item h-100 active">
+                        <img src="/Images/Carousal/fbanner1.jpg" class="d-block w-100 h-100" alt="Recipes">
+                    </div>
+                    <div class="carousel-item h-100">
+                        <img src="/Images/Carousal/fbanner2.png" class="d-block w-100 h-100" alt="Recipes">
+                    </div>
+                    <div class="carousel-item h-100">
+                        <img src="/Images/Carousal/fbanner3.jpg" class="d-block w-100 h-100" alt="Recipes">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <div class="mb-3">
+                <h2>Get The Best <span class="text-success fst-italic">Food</span> From <span class="text-success">The Best Restaurants.</span></h2>
+            </div>
+            <div class="mb-1 p-2">
+                <span><i class="fa-solid fa-seedling text-success mx-2 fs-4"></i></span>
+                <span class="fs-5 text-dark">Fresh Food</span>
+            </div>
+            <div class="mb-1 p-2">
+                <span><i class="fa-solid fa-wheat-awn text-success mx-2 fs-4"></i></span>
+                <span class="fs-5 text-dark">Healthy Food</span>
+            </div>
+            <div class="mb-1 p-2">
+                <span><i class="fa-sharp fa-solid fa-motorcycle text-success mx-2 fs-4"></i></span>
+                <span class="fs-5 text-dark">Faster Delivery</span>
+                <p class="py-2">We promiseDelivery Order within 30 Min</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 mb-2">
+            <h2 class="fst-italic text-black mt-3">Today's Special</h2>
+            <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <div class="card">
+                        <div class="card-img-top">
+                            <img src="http://forkify-api.herokuapp.com/images/BBQChickenPizzawithCauliflowerCrust5004699695624ce.jpg" class="w-100 h-100" alt="Pizza"/>
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h5>Pizza</h5>
+                                </div>
+                                <div class="d-flex justify-content-between flex-wrap">
+                                    <a href="/Recipe/Order?id=5ed6604591c37cdc054bcd09" class="btn btn-success btn-sm">Order</a>
+                                    <span class="Addtocarticon" onclick="cart.call(this)" recipeofid="5ed6604591c37cdc054bcd09"><i class="fa-regular fa-heart fs-5"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <div class="card">
+                        <div class="card-img-top">
+                            <img src="https://forkify-api.herokuapp.com/images/gelatin_poke_cake2d07.jpg" class="w-100 h-100" alt="Cake"/>
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h5>Cake</h5>
+                                   <div class="d-flex justify-content-between flex-wrap">
+                                    <a href="/Recipe/Order?id=5ed6604591c37cdc054bcf3d" class="btn btn-success btn-sm">Order</a>
+                                        <span class="Addtocarticon" onclick="cart.call(this)" recipeofid="5ed6604591c37cdc054bcf3d">
+                                            <i class="fa-regular fa-heart fs-5"></i>
+                                            </span>
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <div class="card">
+                        <div class="card-img-top">
+                            <img src="https://forkify-api.herokuapp.com/images/PeachCrispwithMapleCreamSauce1652.jpg" class="w-100 h-100" alt="Ice Cream"/>
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h5>Ice Creams</h5>
+                                </div>
+                                <div class="d-flex justify-content-between flex-wrap">
+                                    <a href="/Recipe/Order?id=5ed6604591c37cdc054bcf4a" class="btn btn-success btn-sm">Order</a>
+                                    <span class="Addtocarticon" onclick="cart.call(this)" recipeofid="5ed6604591c37cdc054bcf4a">
+                                        <i class="fa-regular fa-heart fs-5"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/lib/jquery/jquery.min.js"></script>
+@if (User.Identity!.IsAuthenticated) {     //Identity may came null,so thats why to remove warning we use '!'
+    <script>
+        $(document).ready(function () {
+            getCartItems();
+            getCartListItemsFromDB();
+        })
+    </script>
+    }
